@@ -1,3 +1,4 @@
+from genericpath import exists
 from re import I
 from .data import Mydataset,EM_mydataset,Mousegment_2018_dataset,split_set,kfold_crossval
 from .loss import Dice_loss_with_logist,Dice_loss
@@ -61,8 +62,11 @@ def visualization_white_as_target(predict: Tensor, label: Tensor, input: Tensor,
     result = torch.zeros(size[0], 3, size[1], size[2])
     result[:, 0, :, :] = label
     result[:, 1, :, :] = predict
-    save_image(input, os.path.join('my-unet/vision_result', 'img_' + name))
-    save_image(result, os.path.join('my-unet/vision_result', name))
+    save_fp = os.path.join(os.getcwd(),'vision_result')
+    if not os.path.exists(save_fp):
+        os.makedirs(save_fp)
+    save_image(input, os.path.join(save_fp, 'img_' + name))
+    save_image(result, os.path.join(save_fp, name))
 
 def save_result_json(fp: str, i, loss, val_f1, f1s):
     if not os.path.exists(fp):
@@ -77,18 +81,27 @@ def auto_path(model:nn.Module,i):
         os.makedirs(result_root)
     if model.__class__.__name__== 'attention_u_net':
         model_para_path = os.path.join(result_root,'model_parameters/attention unet')
+        json_path = os.path.join(result_root,'json/attention unet')
+        if not os.path.exists(json_path):
+            os.makedirs(json_path)
         if not os.path.exists(model_para_path):
             os.makedirs(model_para_path)
         model_dir = os.path.join(result_root,f'model_parameters/attention unet/{i}_EM_model.pt')
         json_dir = os.path.join(result_root,f'training_json/attention unet')
     if model.__class__.__name__ =='unet':
         model_para_path = os.path.join(result_root,'model_parameters/unet')
+        json_path = os.path.join(result_root,'json/unet')
+        if not os.path.exists(json_path):
+            os.makedirs(json_path)
         if not os.path.exists(model_para_path):
             os.makedirs(model_para_path)
         model_dir = os.path.join(result_root,f'model_parameters/unet/{i}_EM_model.pt')
         json_dir = os.path.join(result_root,f'training_json/unet')
     if model.__class__.__name__ =='residual_unet':
         model_para_path = os.path.join(result_root,'model_parameters/residual unet')
+        json_path = os.path.join(result_root,'json/residual unet')
+        if not os.path.exists(json_path):
+            os.makedirs(json_path)
         if not os.path.exists(model_para_path):
             os.makedirs(model_para_path)
         model_dir = os.path.join(result_root,f'model_parameters/residual unet/{i}_EM_model.pt')
@@ -96,7 +109,7 @@ def auto_path(model:nn.Module,i):
     return model_dir,json_dir
 
 def split_train_test(dataset:Dataset,batch_size,train_t,val_t,i:int=0,kfold__mode:bool=False,k=5):
-    root_path = os.getcwd()
+    root_path = os.path.join(os.getcwd(),'MICCAI2018MoNuSeg')
     if kfold__mode:
         data = dataset(root_path,[])
         t,v= kfold_crossval(data,k,i,train_t,val_t)

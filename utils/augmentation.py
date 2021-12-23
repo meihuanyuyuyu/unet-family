@@ -140,7 +140,7 @@ class My_center_crop(CenterCrop):
         super().__init__(size)
     
     def forward(self, *args):
-        return [super().forward(_) for _ in args]
+        return [super(My_center_crop,self).forward(_) for _ in args]
 
 class My_colorjitter(ColorJitter):
     def __init__(self, brightness=0, contrast=0, saturation=0, hue=0):
