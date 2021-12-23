@@ -1,0 +1,16 @@
+引用文献：
+N. Kumar et al., "A Multi-organ Nucleus Segmentation Challenge," in IEEE Transactions on Medical Imaging (in press) [Supplementary Information] [Code]
+
+@ARTICLE{8880654,  author={Kumar, Neeraj and Verma, Ruchika and Anand, Deepak and Zhou, Yanning and Onder, Omer Fahri and Tsougenis, Efstratios and Chen, Hao and Heng, Pheng-Ann and Li, Jiahui and Hu, Zhiqiang and Wang, Yunzhi and Koohbanani, Navid Alemi and Jahanifar, Mostafa and Tajeddin, Neda Zamani and Gooya, Ali and Rajpoot, Nasir and Ren, Xuhua and Zhou, Sihang and Wang, Qian and Shen, Dinggang and Yang, Cheng-Kun and Weng, Chi-Hung and Yu, Wei-Hsiang and Yeh, Chao-Yuan and Yang, Shuang and Xu, Shuoyu and Yeung, Pak Hei and Sun, Peng and Mahbod, Amirreza and Schaefer, Gerald and Ellinger, Isabella and Ecker, Rupert and Smedby, Orjan and Wang, Chunliang and Chidester, Benjamin and Ton, That-Vinh and Tran, Minh-Triet and Ma, Jian and Do, Minh N. and Graham, Simon and Vu, Quoc Dang and Kwak, Jin Tae and Gunda, Akshaykumar and Chunduri, Raviteja and Hu, Corey and Zhou, Xiaoyang and Lotfi, Dariush and Safdari, Reza and Kascenas, Antanas and O’Neil, Alison and Eschweiler, Dennis and Stegmaier, Johannes and Cui, Yanping and Yin, Baocai and Chen, Kailin and Tian, Xinmei and Gruening, Philipp and Barth, Erhardt and Arbel, Elad and Remer, Itay and Ben-Dor, Amir and Sirazitdinova, Ekaterina and Kohl, Matthias and Braunewell, Stefan and Li, Yuexiang and Xie, Xinpeng and Shen, Linlin and Ma, Jun and Baksi, Krishanu Das and Khan, Mohammad Azam and Choo, Jaegul and Colomer, Adrián and Naranjo, Valery and Pei, Linmin and Iftekharuddin, Khan M. and Roy, Kaushiki and Bhattacharjee, Debotosh and Pedraza, Anibal and Bueno, Maria Gloria and Devanathan, Sabarinathan and Radhakrishnan, Saravanan and Koduganty, Praveen and Wu, Zihan and Cai, Guanyu and Liu, Xiaojie and Wang, Yuqin and Sethi, Amit},  journal={IEEE Transactions on Medical Imaging},   title={A Multi-Organ Nucleus Segmentation Challenge},   year={2020},  volume={39},  number={5},  pages={1380-1391},  doi={10.1109/TMI.2019.2947628}}
+
+ N. Kumar, R. Verma, S. Sharma, S. Bhargava, A. Vahadane and A. Sethi, "A Dataset and a Technique for Generalized Nuclear Segmentation for Computational Pathology," in IEEE Transactions on Medical Imaging, vol. 36, no. 7, pp. 1550-1560, July 2017 [Code]
+ 
+ @ARTICLE{7872382,  author={Kumar, Neeraj and Verma, Ruchika and Sharma, Sanuj and Bhargava, Surabhi and Vahadane, Abhishek and Sethi, Amit},  journal={IEEE Transactions on Medical Imaging},   title={A Dataset and a Technique for Generalized Nuclear Segmentation for Computational Pathology},   year={2017},  volume={36},  number={7},  pages={1550-1560},  doi={10.1109/TMI.2017.2677499}}
+ 
+ 7个器官，30张图片，1000*1000的分辨率，MICCAI2018
+ 
+ 其中包含 30 个组织图像，每个图像大小1000 × 1000 ，包含 21, 623 个手工标注的核边界。每个1000 × 1000 此数据集中的图像是从单独的全幻灯片图像 (WSI) 中提取的（扫描于 40 × ) 从 TCGA 下载的个体患者[。该数据集代表了 7 个不同的器官，即。、乳腺、肝脏、肾脏、前列腺、膀胱、结肠和胃，并包括良性和患病组织样本，以确保核外观的多样性。此外，训练图像来自 18 家不同的医院，由于实验室之间染色实践和图像采集设备（扫描仪）的差异，这引入了另一个外观变化来源。代表1000 × 1000 从患者 WSI 中提取来自细胞核密集区域的子图像，以减少处理 WSI 的计算负担并增加参与度。数据集中每个 WSI 和患者只包含一种作物以确保多样性。训练图像在各个器官中的分布如表 II所示，而患者和医院的详细信息可在挑战网页。
+ 
+ MoNuSeg is an official satellite event of MICCAI 2018.
+ 
+ 
