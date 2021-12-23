@@ -2,3 +2,5 @@ tqdm
 torch
 torchvision
 torch.utils.tensorboard
+json
+PIL
