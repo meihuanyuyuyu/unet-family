@@ -1,4 +1,3 @@
-from os import defpath
 from typing import Optional
 import torch
 from torch import Tensor
@@ -18,7 +17,7 @@ class Down(nn.Module):
             self.conv1 = nn.Sequential(nn.Conv2d(in_channels=self.in_channel, out_channels=self.out_channel, kernel_size=3, padding=1), nn.BatchNorm2d(out_channel), active_func(True), nn.Conv2d(self.out_channel, self.out_channel, 3, padding=1), nn.BatchNorm2d(out_channel), active_func(True))
         else:
             self.conv1 = nn.Sequential(nn.Conv2d(in_channels=self.in_channel, out_channels=self.out_channel, kernel_size=3, padding=1), active_func(True), nn.Conv2d(self.out_channel, self.out_channel, 3, padding=1), active_func(True))
-        self.maxpool = nn.MaxPool2d(2)
+        self.maxpool = nn.AvgPool2d(2)
 
     def forward(self, x):
         ################### 前向传播 ############################################
@@ -77,7 +76,7 @@ class unet(nn.Module):
         for i in range(2,depth):
             up = UpSample(filters[i],filters[i-1],is_bn,active_func)
             setattr(self,f'up{i}',up)
-        self.final = nn.Sequential(nn.Conv2d(128, 64, 3, padding=1), nn.BatchNorm2d(64), nn.ReLU(True), nn.Conv2d(64, 64, 3, padding=1), nn.BatchNorm2d(64), nn.ReLU(True), nn.Conv2d(64, num_class, 1))
+        self.final = nn.Sequential(nn.Conv2d(filters[1], filters[0], 3, padding=1), nn.BatchNorm2d(64), nn.ReLU(True), nn.Conv2d(64, 64, 3, padding=1), nn.BatchNorm2d(64), nn.ReLU(True), nn.Conv2d(64, num_class, 1))
     
     
     def auto_channels(self,depth):

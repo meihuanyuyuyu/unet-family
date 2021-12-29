@@ -1,6 +1,6 @@
-__all__ = ['residual_unet','unet','unet++','init_weight']
+__all__ = ['residual_unet','unet','unet++','init_weight','Attention_unet']
 from .unet import unet
-from .attention_unet import *
+from .Attention_unet import attention_unet
 import torch.nn as nn
 
 def init_weight(m):

@@ -1,7 +1,6 @@
 import torch
-from torch.nn import modules
 import utils
-from torch.nn.modules import module
+from models import *
 from utils.augmentation import Random_crop,Random_flip,Randomrotation,My_center_crop,My_colorjitter,Normalize_,Elastic_deformation
 from torch.utils.data import Dataset
 from utils import train,val,save_result_json
@@ -26,7 +25,7 @@ def main(i,
     train_sampled,val_sampled = utils.split_train_test(dataset,batch_size,train_t,val_t)
     net =model(in_c=in_c,num_class=num_class,depth=depth,is_bn=bn,active_func=nn.LeakyReLU).to(device)
     net.apply(init_weight)
-    opt = SGD(net.parameters(),lr=lr,momentum=0.9)
+    opt = SGD(net.parameters(),lr=lr,momentum=0.9,weight_decay=1e-4)
     criterion = utils.Dice_loss_with_logist()
     model_dir,json_dir =utils.auto_path(net,i)
     val_f1s = []
@@ -50,5 +49,5 @@ def main(i,
     
 if __name__ == '__main__':
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    main(9,[Random_crop([512,512]),My_colorjitter(0.7,0.7,0.7),Elastic_deformation(10,100),Randomrotation([0.1,20.1]),Random_flip(),Normalize_([0.5,0.5,0.5],[0.5,0.5,0.5])],
-    [My_center_crop([512,512]),Normalize_([0.5,0.5,0.5],[0.5,0.5,0.5])],unet,1000,utils.Mousegment_2018_dataset)
+    main(0,[Random_crop([512,512]),My_colorjitter(0.7,0.7,0.7),Elastic_deformation(10,100),Randomrotation([0.1,20.1]),Random_flip(),Normalize_([0.5,0.5,0.5],[0.5,0.5,0.5])],
+    [My_center_crop([512,512]),Normalize_([0.5,0.5,0.5],[0.5,0.5,0.5])],Attention_unet.attention_unet,100,utils.Mousegment_2018_dataset)

@@ -79,7 +79,7 @@ def auto_path(model:nn.Module,i):
     result_root = os.path.join(os.getcwd(),'results')
     if not os.path.exists(result_root):
         os.makedirs(result_root)
-    if model.__class__.__name__== 'attention_u_net':
+    if model.__class__.__name__== 'attention_unet':
         model_para_path = os.path.join(result_root,'model_parameters/attention unet')
         json_path = os.path.join(result_root,'json/attention unet')
         if not os.path.exists(json_path):
@@ -88,6 +88,7 @@ def auto_path(model:nn.Module,i):
             os.makedirs(model_para_path)
         model_dir = os.path.join(result_root,f'model_parameters/attention unet/{i}_EM_model.pt')
         json_dir = os.path.join(result_root,f'training_json/attention unet')
+
     if model.__class__.__name__ =='unet':
         model_para_path = os.path.join(result_root,'model_parameters/unet')
         json_path = os.path.join(result_root,'json/unet')
@@ -97,6 +98,7 @@ def auto_path(model:nn.Module,i):
             os.makedirs(model_para_path)
         model_dir = os.path.join(result_root,f'model_parameters/unet/{i}_EM_model.pt')
         json_dir = os.path.join(result_root,f'training_json/unet')
+        
     if model.__class__.__name__ =='residual_unet':
         model_para_path = os.path.join(result_root,'model_parameters/residual unet')
         json_path = os.path.join(result_root,'json/residual unet')

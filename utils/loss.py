@@ -1,5 +1,5 @@
 import torch
-from torch.functional import Tensor
+from torch import Tensor
 from PIL import Image
 import torch.nn.functional as nnf
 import numpy as np
@@ -17,7 +17,6 @@ class weighted_map(object):
 
     def __call__(self, label_path: str) -> Tensor:
         l = np.array(Image.open(label_path), dtype=np.int64)
-        print(l.shape)
         l = torch.tensor(l, dtype=torch.int64)
         l = l.clip(0, 1)
         cells, num_cells = label(l)
